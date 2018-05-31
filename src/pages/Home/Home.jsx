@@ -17,10 +17,29 @@ export default class Home extends Component {
     this.state = {
       tableData: {
         list: [],
-        isShow: true,
+        isShow: false,
+        title: ''
       },
     };
     this.onSearchSchool = this.onSearchSchool.bind(this);
+  }
+
+
+  componentDidMount() {
+    const thiz = this;
+    NebUtils.userCallAxios(
+      "GetRecentRecord",
+      `["7"]`,
+      ret => {
+        thiz.setState({
+          tableData: {
+            list: ret,
+            isShow: true,
+            title: 'Latest Safety 365 Information'
+          }
+        })
+      }
+    );
   }
 
   static domainName(url) {
@@ -58,7 +77,8 @@ export default class Home extends Component {
         thiz.setState({
           tableData: {
             list: ret.reverse(),
-            isShow: true
+            isShow: true,
+            title: `Search For: ${key}`
           }
         })
       }

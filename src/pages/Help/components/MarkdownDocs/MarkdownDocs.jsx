@@ -5,45 +5,52 @@ import './MarkdownDocs.scss';
 const initialSource = `
 # Nebulas Safety 365 Platform Help Manuel
 
-## 产品定位
+## Product Positioning
 
-支付宝小程序是一种全新的开放模式，它运行在支付宝客户端，可以被便捷地获取和传播，为终端用户提供更优的用户体验。小程序开放给开发者更多的JSAPI和OpenAPI能力，通过小程序可以为用户提供多样化便捷服务。
+Nebulas Safety 365 is a decentralized platform based on NAS smart contracts that focuses on preventing phishing websites, spam, fraudulent calls, advertising Twitter, and marketing WeChat, making the Internet safer and cleaner.
 
-支付宝小程序开放给企业帐号，想要成为支付宝小程序开发者，需要完成注册、入驻以及小程序创建三步。
+Nebulas Safety 365 can help you permanently save this data to the blockchain and share it with others.
+
+The site's data is stored on the smart contract of the nebula blockchain. Blockchain is a new application mode of computer technology such as distributed data storage, point-to-point transmission, consensus mechanism, and encryption algorithms. Blockchains are characterized by decentralization, openness, autonomy, non-disruptive information, and anonymity.
+
+With the help of blockchain technology, this site can realize permanent preservation of data and cannot be tampered with. The blockchain also has the feature of anonymity. You can share this useful data, and no one knows who you are and solve the problem of sharing. The risk of data being tracked.
+
+At the same time, Nebulas Safety 365 supports not only browser wallet transactions but also mobile mobile wallets.
 
 
-## 第一步：注册
+## Use Nebulas Safety 365 via your browser wallet
 
-* 用【企业支付宝账号】登录开放平台 ；
-* 进入【小程序公测首页】 申请小程序公测，审核时间为1个工作日；
+- Step 1: open the website and check the latest Nebulas Safety 365 safety information
+- Step 2: according to your needs, find the phone, email address, website domain name, Twitter, WeChat, QQ, etc. that you think are suspicious.
+- Step 3: if you want to share information and help others to better browse the Internet, you can click the "Provide Information" button on the home page.
+- Step 4: Download Chrome Browser and NAS Wallet Extension
+- Step 5, fill in the form you want to share, submit the transaction, log in to your NAS account and switch to the main network, submit information
+- Step 6: Check your newly shared information on the home page
 
-> 注意1：公测期间尚未开放个人支付宝账户
-> 注意2：未注册企业支付宝账号请访问：注册企业支付宝账号
+## Using Nebulas Safety 365 with Mobile Wallet
 
-## 第二步：入驻
+- Step 1: Open the site on the mobile (mobile phone, tablet, etc.) and check the latest Nebula Security 365 security information
+- Step 2: According to your needs, find the mobile phone, e-mail address, website domain name, Twitter, WeChat, QQ, etc. that you consider suspicious.
+- Step 3: If you want to share information and help others to better browse the Internet, you can click the "provide information" button on the home page.
+- Step 4: Install NAS Mobile Wallet
+- Step 5, fill out the form you want to share, submit the transaction, login to your NAS account and switch to the main network, submit information
+- Step 6: The Nebula Wallet app pops up after submitting the information. Submit the transaction after confirming the information.
+- Step 7: Check the newly shared information on your homepage
 
-使用企业支付宝账户登录，依照入驻指引选择自己入驻的身份角色，完善身份信息，签署平台服务协议，成为开放平台合作伙伴。
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/14392267.jpg)
 
-**1. 支付宝账号登录**
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/72291809.jpg)
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/e3ecca36714dd5d0cc8ecca0f84c000a.png)
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/54489193.jpg)
 
-**2. 选择入驻身份**
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/94760618.jpg)
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/b39b0dfa0c13882e4ab7377fc9f194d0.png)
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/2844709.jpg)
 
-**3. 完善信息**
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/38215194.jpg)
 
-![](https://gw.alipayobjects.com/zos/skylark/public/files/af51a6e5c4c41089588b8a2ea9f4c993.png)
+![](http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/50231976.jpg)
 
-## 第三步：登录小程序管理中心
-
-完成注册后，可以选择以下渠道进入小程序管理中心：
-
-* 通过小程序首页,点击“登录管理中心”，进入小程序管理中心，开始【创建小程】
-* 通过开放平台首页,点击"登录"，进入开放平台管理中心，选择“开发者中心／小程序”，开始【创建小程序】
-
-![](https://gw.alipayobjects.com/zos/skylark/public/files/5272d5041de283125ac03428a6e0ed4f.png)
 `;
 
 export default class MarkdownDocs extends Component {

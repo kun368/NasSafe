@@ -26,9 +26,9 @@ export default () => {
           textAlign: 'right',
         }}
       >
-        CodeKun
+        TupleSoft
         <br />
-        © 2018 版权所有
+        © 2018 All Rights Reserved
       </div>
     </div>
   );

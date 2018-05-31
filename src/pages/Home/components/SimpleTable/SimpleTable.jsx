@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {Table, Pagination, Rating, Balloon} from '@icedesign/base';
+import {Table, Pagination, Rating, Balloon, Tag} from '@icedesign/base';
 import IceContainer from '@icedesign/container';
 import IceLabel from '@icedesign/label';
 import KunUtils from '../../../../util/KunUtils.js'
 import {Base64} from 'js-base64';
 import moment from 'moment';
-
-moment.locale('zh-cn');
 
 export default class SimpleTable extends Component {
   static displayName = 'SimpleTable';
@@ -17,12 +15,11 @@ export default class SimpleTable extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    }
+    this.state = {}
   }
 
   renderAddress = (value) => {
-    const str = KunUtils.beautySub(value, 5);
+    const str = KunUtils.beautySub(value, 26);
     const trigger =
       <div>
         {str}
@@ -37,7 +34,7 @@ export default class SimpleTable extends Component {
 
   renderContent = (value) => {
     value = Base64.decode(value);
-    const str = KunUtils.beautySub(value, 5);
+    const str = KunUtils.beautySub(value, 26);
     const trigger = <p>{str}</p>;
 
     return (
@@ -48,20 +45,33 @@ export default class SimpleTable extends Component {
   };
 
   renderSubject = (value) => {
-    const str = KunUtils.beautySub(value, 5);
-    const trigger = <p>{str}</p>;
-
     return (
-      <Balloon trigger={trigger} triggerType="hover">
-        {value}
-      </Balloon>
+      <div>
+        <IceLabel style={{backgroundColor: '#7265e6'}}>{value}</IceLabel>
+      </div>
     );
   };
 
   renderResult = (value) => {
+    if (value === 'Safe') {
+      return (
+        <div>
+          <IceLabel style={{backgroundColor: '#cfefdf', color: '#00a854'}}>{value}</IceLabel>
+        </div>
+      )
+    }
+    if (value === 'Other') {
+      return (
+        <div>
+          <IceLabel style={{backgroundColor: '#fde3cf', color: '#f56a00'}}>{value}</IceLabel>
+        </div>
+      )
+    }
     return (
-      {value}
-    )
+      <div>
+        <IceLabel style={{backgroundColor: '#f04134'}}>{value}</IceLabel>
+      </div>
+    );
   };
 
   renderTime = (value) => {
@@ -76,19 +86,6 @@ export default class SimpleTable extends Component {
     );
   };
 
-  extractFilterLabel(tableData, name) {
-    let res = new Set(tableData.map(it => {
-      return it[name];
-    }));
-    res = new Array(...res).map(it => {
-      return {
-        label: it,
-        value: it
-      }
-    });
-    return res;
-  }
-
   render() {
     if (this.props.tableData.isShow === false) {
       return '';
@@ -100,6 +97,7 @@ export default class SimpleTable extends Component {
     return (
       <div className="simple-table" style={{margin: '20px 8%'}}>
         <IceContainer>
+          <h2>{this.props.tableData.title}</h2>
           <Table
             dataSource={tableData}
             className="basic-table"
@@ -112,14 +110,21 @@ export default class SimpleTable extends Component {
               cell={this.renderAddress}
             />
             <Table.Column
+              title="Subject"
+              dataIndex="type"
+              width={120}
+              cell={this.renderSubject}
+            />
+            <Table.Column
               title="Result"
               dataIndex="result"
+              width={120}
               cell={this.renderResult}
             />
             <Table.Column
-              title="Subject"
-              dataIndex="Subject"
-              cell={this.renderSubject}
+              title="To"
+              dataIndex="mainBody"
+              cell={this.renderAddress}
             />
 
             <Table.Column
@@ -130,6 +135,7 @@ export default class SimpleTable extends Component {
             <Table.Column
               title="Time"
               dataIndex="time"
+              width={150}
               cell={this.renderTime}
             />
           </Table>

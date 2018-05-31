@@ -94,6 +94,22 @@ NasSefe.prototype = {
       });
   },
 
+  GetRecentRecord(count) {
+    let list = this.bodyList.get("list");
+    if (!list) {
+      list = [];
+    }
+    if (count > list.length) {
+      count = list.length;
+    }
+    return list
+      .reverse()
+      .slice(0, count)
+      .map(it => {
+        return this.repo.get(it);
+      });
+  },
+
   GetAllMainBodys() {
     let list = this.bodyList.get("list");
     if (!list) {

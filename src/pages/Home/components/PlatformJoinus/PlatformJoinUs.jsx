@@ -29,17 +29,24 @@ export default class PlatformJoinUs extends Component {
       >
         <div>
           <div style={styles.titleWrapper}>
-            <h2 style={styles.title}>现在就加入我们</h2>
+            <h2 style={styles.title}>Start Using It Now!</h2>
             <p>
-              在人工智能将替代一切的未来<br />唯有内容的创作无可替代
+              In the future, blockchain will combine everything
+              <br />
+              Use Nebulas Safety 365 to share and avoid
+              <br />
+              fraudulent calls, spam, phishing sites, advertising Twitter
             </p>
           </div>
           <div style={styles.buttons}>
-            <Button style={styles.secondaryButton} type="normal">
-              开通
-            </Button>
-            <Button style={styles.primaryButton} type="primary">
-              登录
+            <Button
+              size="large"
+              type="primary"
+              component="a"
+              href="/#/Help"
+              target="_blank"
+            >
+              View Usage Help Manual ->
             </Button>
           </div>
         </div>
@@ -50,14 +57,14 @@ export default class PlatformJoinUs extends Component {
 
 const styles = {
   wrapper: {
-    height: 740,
+    height: 420,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   },
   titleWrapper: {
     textAlign: 'center',
-    paddingTop: 200,
+    paddingTop: 90,
   },
   title: {
     fontSize: 32,
