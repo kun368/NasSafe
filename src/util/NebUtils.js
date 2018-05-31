@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const nebPay = new NebPay();
 
-const dappAddress = "n1vXoLP8qFzk47u52zgAWufdDrwBFc9Rq1T";
-const netType = "mainnet";
+const dappAddress = "n1k3VwzbL66gZkG5uLZ3NNyV6RujX89bF4z";
+const netType = "testnet";
 
 export default class NebUtils {
 
@@ -68,21 +68,13 @@ export default class NebUtils {
   /**
    * nebPay执行合约
    */
-  static nebPayCall = (func, args, showQrCode, sucCallback, errCallback) => {
+  static nebPayCall = (func, args, showQrCode, sucCallback) => {
     nebPay.call(dappAddress, '0', func, args, {
       qrcode: {
         showQRCode: showQrCode,
       },
       listener: (resp) => {
-        if (resp.execute_err !== "") {
-          console.log('error!', resp);
-          if (errCallback) {
-            errCallback(resp.execute_err);
-          }
-          return;
-        }
-        const result = JSON.parse(resp.result);
-        sucCallback(result);
+        sucCallback(resp.txhash);
       },
     });
   };

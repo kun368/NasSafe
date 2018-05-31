@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-  nas-110-dapp-server:
-    image: kun368/nas-110:master
-    restart: always
-    ports:
-      - "8111:80"

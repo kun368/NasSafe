@@ -30,23 +30,40 @@ export default class PlatformLanding extends Component {
       <div style={styles.wrapper}>
         <div style={styles.body}>
           <h2 style={styles.title}>
-            <Icon type="security" size="xl"/> Nebula Safety 365 platform
+            <Icon type="security" size="xl"/> Nebulas Safety 365
           </h2>
           <span style={styles.title2}>
-            Public&nbsp;&nbsp;/&nbsp;&nbsp;
-            Safe&nbsp;&nbsp;/&nbsp;&nbsp;
-            Blockchain Based
           </span>
           <Search
             autoWidth
             hasIcon={true}
             size="large"
-            searchText="Recognition"
+            searchText="RECOGNITION"
             value={this.state.value}
             onSearch={this.props.onSearch}
             dataSource={this.state.dataSource}
             placeholder="Enter suspicious scam Websites, Twitter, WeChat, QQ, Phone, etc."
           />
+
+          <Button.Group style={{paddingTop: '20px'}}>
+            <Button
+              type="primary"
+              component="a"
+              target="_blank"
+              href="/#/Help"
+            >
+              <Icon type="form" /> View Help Manual
+            </Button>
+
+            <Button
+              type="primary"
+              component="a"
+              target="_blank"
+              href="/#/Create"
+            >
+              <Icon type="comments" /> Provide Information
+            </Button>
+          </Button.Group>
         </div>
       </div>
     );
@@ -68,7 +85,7 @@ const styles = {
   },
   wrapper: {
     overflow: 'hidden',
-    height: 420,
+    height: 480,
     backgroundImage:
       'url("http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/554157.jpg")',
     position: 'relative',

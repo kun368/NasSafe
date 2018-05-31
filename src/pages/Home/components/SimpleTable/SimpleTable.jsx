@@ -18,7 +18,6 @@ export default class SimpleTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterParams: []
     }
   }
 
@@ -36,14 +35,6 @@ export default class SimpleTable extends Component {
     );
   };
 
-  renderSchool = (value) => {
-    return (
-      <IceLabel inverse={false} status="default">
-        {value}
-      </IceLabel>
-    );
-  };
-
   renderContent = (value) => {
     value = Base64.decode(value);
     const str = KunUtils.beautySub(value, 5);
@@ -54,6 +45,23 @@ export default class SimpleTable extends Component {
         {value}
       </Balloon>
     );
+  };
+
+  renderSubject = (value) => {
+    const str = KunUtils.beautySub(value, 5);
+    const trigger = <p>{str}</p>;
+
+    return (
+      <Balloon trigger={trigger} triggerType="hover">
+        {value}
+      </Balloon>
+    );
+  };
+
+  renderResult = (value) => {
+    return (
+      {value}
+    )
   };
 
   renderTime = (value) => {
@@ -67,32 +75,6 @@ export default class SimpleTable extends Component {
       </Balloon>
     );
   };
-
-  renderScore = (value) => {
-    const trigger = <Rating value={value.scoreSum} type="grade" showInfo={false}/>;
-
-    return (
-      <Balloon trigger={trigger} triggerType="hover">
-        <div>学术水平评分：<Rating value={value.scoreAcademic} type="grade"/></div>
-        <br/>
-        <div>科研经费评分：<Rating value={value.scoreFunding} type="grade"/></div>
-        <br/>
-        <div>师生关系评分：<Rating value={value.scoreRelationship} type="grade"/></div>
-        <br/>
-        <div>学生前途评分：<Rating value={value.scoreFuture} type="grade"/></div>
-        <br/>
-        <div>综合评价评分：<Rating value={value.scoreSum} type="grade"/></div>
-        <br/>
-      </Balloon>
-    );
-  };
-
-  onFilter(filterParams) {
-    console.log(filterParams);
-    this.setState({
-      filterParams: filterParams,
-    })
-  }
 
   extractFilterLabel(tableData, name) {
     let res = new Set(tableData.map(it => {
@@ -112,78 +94,41 @@ export default class SimpleTable extends Component {
       return '';
     }
 
-    // 过滤
-    let tableData = this.props.tableData.list.slice();
-    for (let key in this.state.filterParams) {
-      let selectedKeys = this.state.filterParams[key].selectedKeys;
-      if (selectedKeys.length) {
-        tableData = tableData.filter(record => {
-          return selectedKeys.some(value => {
-            return record[key].indexOf(value) > -1;
-          });
-        });
-      }
-    }
-
-    // 转换数据格式
-    tableData.map(it => {
-      it.scores = {
-        scoreAcademic: parseInt(it.scoreAcademic),
-        scoreFunding: parseInt(it.scoreFunding),
-        scoreRelationship: parseInt(it.scoreRelationship),
-        scoreFuture: parseInt(it.scoreFuture),
-        scoreSum: parseInt(it.scoreSum)
-      }
-    });
+    const tableData = this.props.tableData.list;
+    console.log(tableData);
 
     return (
-      <div className="simple-table" style={{margin: '20px 12%'}}>
+      <div className="simple-table" style={{margin: '20px 8%'}}>
         <IceContainer>
           <Table
             dataSource={tableData}
             className="basic-table"
             hasBorder={false}
-            onFilter={this.onFilter.bind(this)}
+            language="en-us"
           >
             <Table.Column
-              filters={this.extractFilterLabel(tableData, 'from')}
-              title="评价人"
+              title="From Address"
               dataIndex="from"
               cell={this.renderAddress}
             />
             <Table.Column
-              title="学校"
-              dataIndex="school"
-              cell={this.renderSchool}
+              title="Result"
+              dataIndex="result"
+              cell={this.renderResult}
             />
             <Table.Column
-              filters={this.extractFilterLabel(tableData, 'academy')}
-              title="学院"
-              dataIndex="academy"
-            />
-            <Table.Column
-              filters={this.extractFilterLabel(tableData, 'teacherName')}
-              title="导师姓名"
-              dataIndex="teacherName"
-            />
-            <Table.Column
-              title="综合评分"
-              dataIndex="scores"
-              cell={this.renderScore}
+              title="Subject"
+              dataIndex="Subject"
+              cell={this.renderSubject}
             />
 
             <Table.Column
-              title="证明认识导师"
-              dataIndex="proveContent"
-              cell={this.renderContent}
-            />
-            <Table.Column
-              title="评价内容"
+              title="Content"
               dataIndex="content"
               cell={this.renderContent}
             />
             <Table.Column
-              title="评价时间"
+              title="Time"
               dataIndex="time"
               cell={this.renderTime}
             />
