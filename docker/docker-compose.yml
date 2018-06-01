@@ -5,4 +5,4 @@ services:
     image: kun368/nas-110:master
     restart: always
     ports:
-      - "8111:80"
+      - "8112:80"
