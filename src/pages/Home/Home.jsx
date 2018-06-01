@@ -20,10 +20,39 @@ export default class Home extends Component {
         isShow: false,
         title: ''
       },
+      welcomeDialogShow: false
     };
     this.onSearchSchool = this.onSearchSchool.bind(this);
   }
 
+  onWelcomeDialogClose = () => {
+    this.setState({
+      welcomeDialogShow: false
+    });
+  };
+
+  renderWelcomeDialog() {
+    return (
+      <Dialog
+        visible={this.state.welcomeDialogShow}
+        onOk={this.onWelcomeDialogClose}
+        closable="esc,mask,close"
+        onCancel={this.onWelcomeDialogClose}
+        onClose={this.onWelcomeDialogClose}
+        title="Welcome to Nebulas Safety 365!"
+      >
+        <p style={{color: 'red'}}>Nebulas Safety 365 was launched. It can be used across platforms, first to support four modes of use,
+          and to add detailed help to use, to make the Internet a better world, and to make fraud nowhere!</p>
+        <ul>
+          <li>Method One. The Chrome browser opens this application, installs the WebExtensionWallet extension, and uses the extension itself to trade</li>
+          <li>Method 2. Chrome browser opens this application, installs WebExtensionWallet extension and NAS mobile wallet, uses mobile phone scanning code transaction</li>
+          <li>Method 3: The mobile phone/tablet browser opens the nebula fitness assistant and automatically invokes the wallet transaction when uploading the file (only need to install the NAS mobile wallet)</li>
+          <li>Method 4. Select this application directly in the NAS mobile wallet DApp market</li>
+        </ul>
+        <p style={{color: 'red'}}>More features are still being added. For more details on how to use, please see the help manual!</p>
+      </Dialog>
+    );
+  }
 
   componentDidMount() {
     const thiz = this;
