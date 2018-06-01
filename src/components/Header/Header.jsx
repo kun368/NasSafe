@@ -11,7 +11,7 @@ const MENUS = [
   },
   {
     name: 'FeedBack',
-    path: 'https://github.com/tuple567/NasSefe/issues/new',
+    path: 'https://github.com/kun368/NasSafe/issues/new',
   },
   {
     name: 'Download Chrome Extension',

@@ -6,6 +6,8 @@ import PlatformLanding from './components/PlatformLanding';
 import NebUtils from "../../util/NebUtils";
 import {Feedback} from '@icedesign/base';
 import SimpleTable from "./components/SimpleTable/SimpleTable";
+import { Dialog } from '@icedesign/base';
+
 
 const Toast = Feedback.toast;
 
@@ -20,7 +22,7 @@ export default class Home extends Component {
         isShow: false,
         title: ''
       },
-      welcomeDialogShow: false
+      welcomeDialogShow: true,
     };
     this.onSearchSchool = this.onSearchSchool.bind(this);
   }
@@ -41,10 +43,10 @@ export default class Home extends Component {
         onClose={this.onWelcomeDialogClose}
         title="Welcome to Nebulas Safety 365!"
       >
-        <p style={{color: 'red'}}>Nebulas Safety 365 was launched. It can be used across platforms, first to support four modes of use,
+        <p style={{color: 'red'}}>Nebulas Safety 365 can be used across platforms, first to support four modes of use,
           and to add detailed help to use, to make the Internet a better world, and to make fraud nowhere!</p>
         <ul>
-          <li>Method One. The Chrome browser opens this application, installs the WebExtensionWallet extension, and uses the extension itself to trade</li>
+          <li>Method 1. The Chrome browser opens this application, installs the WebExtensionWallet extension, and uses the extension itself to trade</li>
           <li>Method 2. Chrome browser opens this application, installs WebExtensionWallet extension and NAS mobile wallet, uses mobile phone scanning code transaction</li>
           <li>Method 3: The mobile phone/tablet browser opens the nebula fitness assistant and automatically invokes the wallet transaction when uploading the file (only need to install the NAS mobile wallet)</li>
           <li>Method 4. Select this application directly in the NAS mobile wallet DApp market</li>
@@ -118,6 +120,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home-page" style={{ background: '#fff' }}>
+        {this.renderWelcomeDialog()}
         <Header />
         <PlatformLanding onSearch={this.onSearchSchool} />
         <SimpleTable tableData={this.state.tableData}/>
