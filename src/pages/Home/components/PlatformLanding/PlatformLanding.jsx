@@ -38,7 +38,6 @@ export default class PlatformLanding extends Component {
             autoWidth
             hasIcon={true}
             size="large"
-            searchText="RECOGNITION"
             value={this.state.value}
             onSearch={this.props.onSearch}
             dataSource={this.state.dataSource}
@@ -87,7 +86,7 @@ const styles = {
     overflow: 'hidden',
     height: 480,
     backgroundImage:
-      'url("http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-5-31/554157.jpg")',
+      'url("http://zzkun-tuchuang.oss-cn-hangzhou.aliyuncs.com/18-6-5/42531903.jpg")',
     position: 'relative',
     backgroundSize: 'cover',
     backgroundColor: '#66ABFF',

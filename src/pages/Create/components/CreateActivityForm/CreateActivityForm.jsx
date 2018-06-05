@@ -57,8 +57,10 @@ export default class CreateActivityForm extends Component {
         function: 'AddSafeInfoRecord',
         args: `["${values.type}", "${values.result}", "${values.mainBody}", "${Base64.encode(values.content)}"]`,
       };
-      NebUtils.nebPayCall(contract.function, contract.args, false, (txHash) => {
-        Toast.success("Transaction submitted. The success of the transaction is to submit information, thank you!")
+      NebUtils.nebPayCall(contract.function, contract.args, true, (txHash) => {
+        if (txHash) {
+          Toast.success("Transaction submitted. The success of the transaction is to submit information, thank you!")
+        }
       });
     });
   };
@@ -160,6 +162,22 @@ export default class CreateActivityForm extends Component {
                   </Button>
                 </Col>
               </Row>
+
+              <Row style={styles.btns}>
+                <Col xxs="8" s="6" l="6" style={styles.formLabel}>
+                  {' '}
+                </Col>
+                <Col s="16" l="18">
+                  <Button
+                    type="primary"
+                    component="a"
+                    href="#/"
+                  >
+                    Return to home page
+                  </Button>
+                </Col>
+              </Row>
+
             </div>
           </IceFormBinderWrapper>
         </IceContainer>
